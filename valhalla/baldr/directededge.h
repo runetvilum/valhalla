@@ -1086,10 +1086,10 @@ public:
   json::MapPtr json() const;
 
 protected:
-  uint64_t endnode_ : 46; // End node of the directed edge
-  uint64_t free_flow_speed_         : 8; // Speed when there is no traffic(kph)
-  uint64_t constrained_flow_speed_  : 8; // Speed when there is traffic(kph)
-  uint64_t predicted_speed_         : 1; // Does this edge have a predicted speed records?
+  uint64_t endnode_ : 46;               // End node of the directed edge
+  uint64_t free_flow_speed_ : 8;        // Speed when there is no traffic(kph)
+  uint64_t constrained_flow_speed_ : 8; // Speed when there is traffic(kph)
+  uint64_t predicted_speed_ : 1;        // Does this edge have a predicted speed records?
   uint64_t spare1_ : 1;
 
   // Data offsets and flags for extended data. Where a flag exists the actual
