@@ -136,7 +136,7 @@ if(ENABLE_SERVICES)
 endif()
 
 install(
-  FILES
+  PROGRAMS
     scripts/valhalla_build_config
     scripts/valhalla_build_elevation
     scripts/valhalla_build_timezones
