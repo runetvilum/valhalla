@@ -40,6 +40,19 @@ std::list<valhalla::odin::TripPath> thor_worker_t::route(valhalla_request_t& req
 thor::PathAlgorithm* thor_worker_t::get_path_algorithm(const std::string& routetype,
                                                        const odin::Location& origin,
                                                        const odin::Location& destination) {
+  // If the origin has date_time set use timedep_forward method.
+  // TODO - what to do if the route is long?
+  if (origin.has_date_time()) {
+    timedep_forward.set_interrupt(interrupt);
+    return &timedep_forward;
+  }
+
+  // If the destination has date_time set use timedep_reverse method.
+  // TODO - what to do if the route is long?
+  if (destination.has_date_time()) {
+    timedep_reverse.set_interrupt(interrupt);
+    return &timedep_reverse;
+  }
   if (routetype == "multimodal" || routetype == "transit") {
     multi_modal_astar.set_interrupt(interrupt);
     return &multi_modal_astar;
